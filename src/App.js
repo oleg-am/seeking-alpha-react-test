@@ -1,4 +1,6 @@
-const App = () => {
+// @flow
+
+const App = (): React$Node => {
   return <div>Start Page</div>;
 };
 
