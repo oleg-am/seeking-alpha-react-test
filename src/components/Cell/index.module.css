@@ -1,0 +1,13 @@
+.container {
+  width: 15px;
+  height: 15px;
+  border: 1px solid gray;
+}
+
+.bgColor--0 {
+  background-color: white;
+}
+
+.bgColor--1 {
+  background-color: black;
+}
