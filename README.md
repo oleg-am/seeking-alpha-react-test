@@ -1,3 +1,6 @@
-# Getting Started
+## Getting Started
 
-### `npm start`
+```sh
+npm install
+npm start
+```
