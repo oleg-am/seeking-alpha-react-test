@@ -1,6 +1,7 @@
 // @flow
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import useInterval from 'hooks/useInterval';
 import getGridWithRandomCells from 'utils/getGridWithRandomCells';
 import transformGrid from 'utils/transformGrid';
 import Cell from 'components/Cell';
@@ -12,15 +13,9 @@ type Props = { size: number, tick: number };
 const Grid = ({ size, tick }: Props) => {
   const [grid, setGrid] = useState(() => getGridWithRandomCells(size));
 
-  useEffect(() => {
-    const tickIntervalId = setInterval(() => {
-      setGrid((grid) => transformGrid(grid));
-    }, tick);
-
-    return () => {
-      clearInterval(tickIntervalId);
-    };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useInterval(() => {
+    setGrid((grid) => transformGrid(grid));
+  }, tick);
 
   return (
     <div>
