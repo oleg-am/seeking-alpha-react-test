@@ -1,9 +1,10 @@
 // @flow
 
-import type { GridType } from 'declarations';
+import type { GridType, CellType } from 'declarations';
 
-const getRandomInteger = (min: number, max: number): number => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+const getRandomCellValue = (): CellType => {
+  // fix flow error: number is incompatible with literal union (CellType)
+  return (Math.round(Math.random()): any);
 };
 
 const getGridWithRandomCells = (size: number): GridType => {
@@ -11,8 +12,7 @@ const getGridWithRandomCells = (size: number): GridType => {
 
   return Array.from({ length: size }, () =>
     Array.from({ length: size }, () => {
-      // fix flow error: number is incompatible with literal union (CellType)
-      return (getRandomInteger(0, 1): any);
+      return getRandomCellValue();
     })
   );
 };
