@@ -1,6 +1,7 @@
 // @flow
 
 import { useState } from 'react';
+import { TEST_IDS } from 'constants/testIds';
 import useInterval from 'hooks/useInterval';
 import getGridWithRandomCells from 'utils/getGridWithRandomCells';
 import transformGrid from 'utils/transformGrid';
@@ -20,9 +21,13 @@ const Grid = ({ size, tick }: Props) => {
   return (
     <div>
       {grid.map((row, i) => (
-        <div key={i} className={styles.row}>
+        <div key={i} className={styles.row} data-testid={TEST_IDS.GRID_ROW}>
           {row.map((cell, i) => (
-            <Cell key={`${i}_${cell}`} value={cell} />
+            <Cell
+              key={`${i}_${cell}`}
+              value={cell}
+              testId={TEST_IDS.GRID_CELL}
+            />
           ))}
         </div>
       ))}
