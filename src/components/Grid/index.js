@@ -20,10 +20,10 @@ const Grid = ({ size, tick }: Props) => {
   return (
     <div>
       {grid.map((row, i) => (
-        <Row key={i} testId={TEST_IDS.GRID_ROW}>
-          {row.map((cell, i) => (
+        <Row key={`row${i}`} testId={TEST_IDS.GRID_ROW}>
+          {row.map((cell, j) => (
             <Cell
-              key={`${i}_${cell}`}
+              key={`row${i}_cell${j}`}
               value={cell}
               testId={TEST_IDS.GRID_CELL}
             />
