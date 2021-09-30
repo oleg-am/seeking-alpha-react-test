@@ -1,5 +1,5 @@
 // @flow
-
+import { memo } from 'react';
 import type { CellType, TestIdType } from 'declarations';
 import styles from './index.module.css';
 
@@ -12,4 +12,4 @@ const Cell = ({ value, testId }: Props) => (
   />
 );
 
-export default Cell;
+export default memo(Cell);
