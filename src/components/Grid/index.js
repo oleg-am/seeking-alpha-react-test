@@ -1,6 +1,6 @@
 // @flow
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { TEST_IDS } from 'constants/testIds';
 import useInterval from 'hooks/useInterval';
 import getGridWithRandomCells from 'utils/getGridWithRandomCells';
@@ -13,9 +13,12 @@ type Props = { size: number, tick: number };
 const Grid = ({ size, tick }: Props) => {
   const [grid, setGrid] = useState(() => getGridWithRandomCells(size));
 
-  useInterval(() => {
-    setGrid((grid) => transformGrid(grid));
-  }, tick);
+  const setTransformedGrid = useCallback(
+    () => setGrid((grid) => transformGrid(grid)),
+    []
+  );
+
+  useInterval(setTransformedGrid, tick);
 
   return (
     <div>

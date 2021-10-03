@@ -9,7 +9,7 @@ const useInterval = (func: Function, delay: number) => {
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [func, delay]);
 };
 
 export default useInterval;
